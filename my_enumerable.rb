@@ -1,11 +1,11 @@
 module Enumerable
 	def my_each
-		for i in 0..self.length-1 
+		for i in 0..self.length-1
 			yield(self[i])
 		end
 		self
 	end
-	
+
 	def my_each_with_index
 		for i in 0..self.length-1
 			yield(self[i],i)
@@ -24,7 +24,7 @@ module Enumerable
 	def my_all?
 		if block_given?
 			self.my_each do |x|
-				return false until yield(x) 
+				return false until yield(x)
 			end
 		else
 			self.my_each do |x|
@@ -78,7 +78,7 @@ module Enumerable
 			self.my_each do |x|
 				new_arr.push(some_proc.call(x))
 			end
-		end	
+		end
 		new_arr
 	end
 
@@ -89,7 +89,7 @@ module Enumerable
 			end
 		else
 			self.my_each do |x|
-				s.call	
+				s.call
 			end
 		end
 		s
@@ -104,7 +104,7 @@ end
 
 my_proc = Proc.new {|x| x**2 }
 
-p [12,4,123,2,0,3].my_map(my_proc) 
+p [12,4,123,2,0,3].my_map(my_proc)
 
 p [12,4,123,2,0,3].my_map(my_proc) { |x|
 	x+1
